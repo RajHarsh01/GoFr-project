@@ -58,7 +58,7 @@ func (h *StudentHandler) UpdateStudentHandler(c *gofr.Context) (interface{}, err
 func (h *StudentHandler) DeleteStudentHandler(c *gofr.Context) (interface{}, error) {
 	studentID, err := strconv.Atoi(c.PathParam("id"))
 	if err != nil {
-		return nil, &errors.Response{StatusCode: http.StatusBadRequest, Code: "BAD_REQUEST", Reason: "Invalid student ID"}
+		return nil, &errors.Response{StatusCode: http.StatusBadRequest, Code: "BAD_REQUEST", Reason: "Wrong Student ID entered"}
 	}
 
 	if err := h.Service.DeleteStudent(c, studentID); err != nil {
