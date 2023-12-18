@@ -68,7 +68,7 @@ To deploy this project-
 ```bash
   delete/studentID
 ```
-![ss](https://github.com/RajHarsh01/GoFr-project-for-Zopsmart/assets/80113516/7df708f5-e6f4-4712-a875-734673e5bc17)
+![ss](https://github.com/RajHarsh01/GoFr-project-for-Zopsmart/assets/80113516/5c84c93a-c785-4fd2-9df0-469d8005469d)
 
 # DATABASE SCHEMA
 
