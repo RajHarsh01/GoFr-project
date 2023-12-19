@@ -1,8 +1,7 @@
 package models
 
 type Student struct {
-	Name          string `json:"name"`
-	Enrollment_No string `json:"Enrollment No"`
-	Email         string `json:"email"`
-	Reason        string `json:"Reason"`
+	ID     int    `json:"id"`
+	Name   string `json:"name"`
+	Reason string `json:"reason"`
 }

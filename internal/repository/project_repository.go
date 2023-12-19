@@ -3,9 +3,10 @@ package repository
 import (
 	"UDC_management/internal/models"
 	"database/sql"
-	"gofr.dev"
+
 	"gofr.dev/pkg/gofr"
 )
+
 type StudentRepository struct {
 	DB *sql.DB
 }
@@ -15,7 +16,7 @@ func NewStudentRepository(db *sql.DB) *StudentRepository {
 }
 
 func (r *StudentRepository) GetStudents(ctx *gofr.Context) ([]models.Student, error) {
-	rows, err := ctx.DB().QueryContext(ctx, "SELECT Name, Enrollment_No, Email, Reason FROM students")
+	rows, err := ctx.DB().QueryContext(ctx, "SELECT id, name, reason FROM students")
 	if err != nil {
 		return nil, err
 	}
@@ -24,23 +25,22 @@ func (r *StudentRepository) GetStudents(ctx *gofr.Context) ([]models.Student, er
 	var students []models.Student
 	for rows.Next() {
 		var student models.Student
-		if err := rows.Scan(&student.Name, &student.Enrollment_No, &student.Email, &student.Reason); err != nil {
+		if err := rows.Scan(&student.ID, &student.Name, &student.Reason); err != nil {
 			return nil, err
 		}
 		students = append(students, student)
+	}
 
 	return students, nil
 }
 
-
 func (r *StudentRepository) AddStudent(ctx *gofr.Context, student models.Student) error {
-	_, err := ctx.DB().ExecContext(ctx, "INSERT INTO students (name, Enrollment_No, Email, Reason) VALUES (?, ?, ?, ?)", student.Name, student.Enrollment_No, student.Email, student.Reason)
+	_, err := ctx.DB().ExecContext(ctx, "INSERT INTO students (id, name, reason) VALUES (?, ?, ?)", student.ID, student.Name, student.Reason)
 	return err
 }
 
-
 func (r *StudentRepository) UpdateStudent(ctx *gofr.Context, student models.Student) error {
-	_, err := ctx.DB().ExecContext(ctx, "UPDATE students SET name=?, Enrollment_No=? WHERE Reason=?",student.Name, student.Enrollment_No, student.Reason)
+	_, err := ctx.DB().ExecContext(ctx, "UPDATE students SET name=?, reason=? WHERE id=?", student.Name, student.Reason, student.ID)
 	return err
 }
 

@@ -39,7 +39,7 @@ func (h *StudentHandler) AddStudentHandler(c *gofr.Context) (interface{}, error)
 func (h *StudentHandler) UpdateStudentHandler(c *gofr.Context) (interface{}, error) {
 	studentID, err := strconv.Atoi(c.PathParam("id"))
 	if err != nil {
-		return nil,
+		return nil, &errors.Response{StatusCode: http.StatusBadRequest, Code: "BAD_REQUEST", Reason: "Invalid student ID"}
 	}
 
 	var updatedStudent models.Student
