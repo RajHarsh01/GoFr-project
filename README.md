@@ -75,7 +75,9 @@ To deploy this project-
 ### Docker image
   copy this command and run in your cmd
   
-     docker run --name student-project-mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=student_project_db -p 3306:3306 -d mysql:8.0.30
+     docker run --name student-project-mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=students -p 3306:3306 -d mysql:8.0.30
+     docker exec -it gofr-mysql mysql -uroot -proot123 students -e "CREATE TABLE students (id INT PRIMARY KEY, name VARCHAR(255) NOT NULL, reason VARCHAR(255) NOT NULL);"
+
 
 ![ss](https://github.com/RajHarsh01/GoFr-project-for-Zopsmart/assets/80113516/ab0fd383-c8d4-4840-9360-e91d607e5e3c)
 
