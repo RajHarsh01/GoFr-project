@@ -1,7 +1,7 @@
 
 ## UDC MANAGEMENT SYSTEM USING GO AND GoFr
 
-The Go CRUD Application is a simple yet robust project built using the GoFr and MySQL database. It facilitates basic CRUD operations (Create, Read, Update, Delete) for managing UDC records. Fork, customize, and extend to meet your specific needs with the flexibility of Go and GoFr.
+The Go CRUD Application is a simple yet robust project built using the GoFr and MySQL database. It facilitates basic CRUD operations (Create, Read, Update, Delete) for managing UDC(University Disciplinary Committee) records. Fork, customize, and extend to meet your specific needs with the flexibility of Go and GoFr.
 
 # Prerequisites
 - [Go](https://go.dev/)
