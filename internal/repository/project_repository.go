@@ -16,7 +16,7 @@ func NewStudentRepository(db *sql.DB) *StudentRepository {
 }
 
 func (r *StudentRepository) GetStudents(ctx *gofr.Context) ([]models.Student, error) {
-	rows, err := ctx.DB().QueryContext(ctx, "SELECT id, name, reason FROM students")
+	rows, err := ctx.DB().QueryContext(ctx, "SELECT id, name, email, reason FROM students")
 	if err != nil {
 		return nil, err
 	}
@@ -35,12 +35,12 @@ func (r *StudentRepository) GetStudents(ctx *gofr.Context) ([]models.Student, er
 }
 
 func (r *StudentRepository) AddStudent(ctx *gofr.Context, student models.Student) error {
-	_, err := ctx.DB().ExecContext(ctx, "INSERT INTO students (id, name, reason) VALUES (?, ?, ?)", student.ID, student.Name, student.Reason)
+	_, err := ctx.DB().ExecContext(ctx, "INSERT INTO students (id, name, email, reason) VALUES (?, ?, ?, ?)", student.ID, student.Name, student.Email, student.Reason)
 	return err
 }
 
 func (r *StudentRepository) UpdateStudent(ctx *gofr.Context, student models.Student) error {
-	_, err := ctx.DB().ExecContext(ctx, "UPDATE students SET name=?, reason=? WHERE id=?", student.Name, student.Reason, student.ID)
+	_, err := ctx.DB().ExecContext(ctx, "UPDATE students SET name=?, reason=?, email=? WHERE id=?", student.Name, student.Reason, student.Email, student.ID)
 	return err
 }
 
